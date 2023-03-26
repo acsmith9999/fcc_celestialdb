@@ -168,19 +168,6 @@ CREATE TABLE public.spacecraft (
 ALTER TABLE public.spacecraft OWNER TO freecodecamp;
 
 --
--- Name: spacecraft_moon; Type: TABLE; Schema: public; Owner: freecodecamp
---
-
-CREATE TABLE public.spacecraft_moon (
-    moon_id integer NOT NULL,
-    spacecraft_id integer NOT NULL,
-    landed boolean
-);
-
-
-ALTER TABLE public.spacecraft_moon OWNER TO freecodecamp;
-
---
 -- Name: spacecraft_spacecraft_id_seq; Type: SEQUENCE; Schema: public; Owner: freecodecamp
 --
 
@@ -340,15 +327,6 @@ INSERT INTO public.spacecraft VALUES (3, 'shenzhou', 2003);
 
 
 --
--- Data for Name: spacecraft_moon; Type: TABLE DATA; Schema: public; Owner: freecodecamp
---
-
-INSERT INTO public.spacecraft_moon VALUES (1, 1, true);
-INSERT INTO public.spacecraft_moon VALUES (1, 2, false);
-INSERT INTO public.spacecraft_moon VALUES (1, 3, false);
-
-
---
 -- Data for Name: star; Type: TABLE DATA; Schema: public; Owner: freecodecamp
 --
 
@@ -444,14 +422,6 @@ ALTER TABLE ONLY public.planet
 
 
 --
--- Name: spacecraft_moon spacecraft_moon_pkey; Type: CONSTRAINT; Schema: public; Owner: freecodecamp
---
-
-ALTER TABLE ONLY public.spacecraft_moon
-    ADD CONSTRAINT spacecraft_moon_pkey PRIMARY KEY (moon_id, spacecraft_id);
-
-
---
 -- Name: spacecraft spacecraft_name_key; Type: CONSTRAINT; Schema: public; Owner: freecodecamp
 --
 
@@ -484,14 +454,6 @@ ALTER TABLE ONLY public.star
 
 
 --
--- Name: spacecraft_moon fk_moon; Type: FK CONSTRAINT; Schema: public; Owner: freecodecamp
---
-
-ALTER TABLE ONLY public.spacecraft_moon
-    ADD CONSTRAINT fk_moon FOREIGN KEY (moon_id) REFERENCES public.moon(moon_id);
-
-
---
 -- Name: moon fk_planet; Type: FK CONSTRAINT; Schema: public; Owner: freecodecamp
 --
 
@@ -500,19 +462,11 @@ ALTER TABLE ONLY public.moon
 
 
 --
--- Name: spacecraft_moon fk_spacecraft; Type: FK CONSTRAINT; Schema: public; Owner: freecodecamp
---
-
-ALTER TABLE ONLY public.spacecraft_moon
-    ADD CONSTRAINT fk_spacecraft FOREIGN KEY (spacecraft_id) REFERENCES public.spacecraft(spacecraft_id);
-
-
---
 -- Name: star fk_star; Type: FK CONSTRAINT; Schema: public; Owner: freecodecamp
 --
 
 ALTER TABLE ONLY public.star
-    ADD CONSTRAINT fk_star FOREIGN KEY (galaxy_id) REFERENCES public.galaxy(galaxy_id);
+    ADD CONSTRAINT fk_galaxy FOREIGN KEY (galaxy_id) REFERENCES public.galaxy(galaxy_id);
 
 
 --
